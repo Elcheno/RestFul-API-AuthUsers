@@ -43,7 +43,7 @@ public class SpringExampleApplication {
 					.username("user")
 					.password(passwordEncoder.encode("user"))
 					.roles(Set.of(RoleEntity.builder()
-							.name(ERole.valueOf(ERole.ADMIN.name())).build()))
+							.name(ERole.valueOf(ERole.USER.name())).build()))
 					.build();
 
 			UserEntity userEntity3 = UserEntity.builder()
@@ -51,7 +51,7 @@ public class SpringExampleApplication {
 					.username("invited")
 					.password(passwordEncoder.encode("invited"))
 					.roles(Set.of(RoleEntity.builder()
-							.name(ERole.valueOf(ERole.ADMIN.name())).build()))
+							.name(ERole.valueOf(ERole.INVITED.name())).build()))
 					.build();
 
 			userRepository.save(userEntity1);
