@@ -21,8 +21,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity userEntity = userRepository.findByUsername(username)
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        UserEntity userEntity = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         Collection<? extends GrantedAuthority> authorities = userEntity.getRoles()
@@ -30,6 +30,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 .map(role -> new SimpleGrantedAuthority("ROLE_".concat(role.getName().name())))
                 .collect(Collectors.toSet());
 
-        return new User(userEntity.getUsername(), userEntity.getPassword(), true, true, true, true, authorities);
+        return new User(userEntity.getName(), userEntity.getPassword(), true, true, true, true, authorities);
     }
 }

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 
 @Component
@@ -24,9 +26,13 @@ public class JwtUtils {
     private String timeExpiration;
 
     // Generar token
-    public String generateTokenAccess(String username) {
+    public String generateTokenAccess(String email) {
+        Map<String, String> claims = new HashMap<>();
+        claims.put("email", email);
+
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(email)
+                .setClaims(claims)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(timeExpiration)))
                 .signWith(getSeignatureKey(), SignatureAlgorithm.HS256)
@@ -60,7 +66,7 @@ public class JwtUtils {
     }
 
     // Obtener username del token
-    public String getUsernameFromToken(String token) {
+    public String getEmailFromToken(String token) {
         return getClaim(token, Claims::getSubject);
     }
 

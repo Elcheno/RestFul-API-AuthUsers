@@ -32,7 +32,7 @@ public class SpringExampleApplication {
 		return args -> {
 			UserEntity userEntity1 = UserEntity.builder()
 					.email("admin@example.com")
-					.username("admin")
+					.name("Admin")
 					.password(passwordEncoder.encode("admin"))
 					.roles(Set.of(RoleEntity.builder()
 							.name(ERole.valueOf(ERole.ADMIN.name())).build()))
@@ -40,7 +40,7 @@ public class SpringExampleApplication {
 
 			UserEntity userEntity2 = UserEntity.builder()
 					.email("user@example.com")
-					.username("user")
+					.name("User")
 					.password(passwordEncoder.encode("user"))
 					.roles(Set.of(RoleEntity.builder()
 							.name(ERole.valueOf(ERole.USER.name())).build()))
@@ -48,7 +48,7 @@ public class SpringExampleApplication {
 
 			UserEntity userEntity3 = UserEntity.builder()
 					.email("invited@example.com")
-					.username("invited")
+					.name("Invited")
 					.password(passwordEncoder.encode("invited"))
 					.roles(Set.of(RoleEntity.builder()
 							.name(ERole.valueOf(ERole.INVITED.name())).build()))

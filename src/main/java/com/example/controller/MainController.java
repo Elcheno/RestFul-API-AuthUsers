@@ -42,7 +42,7 @@ public class MainController {
                 .collect(Collectors.toSet());
 
         UserEntity userEntity = UserEntity.builder()
-                .username(createUserDTO.getUsername())
+                .name(createUserDTO.getName())
                 .email(createUserDTO.getEmail())
                 .password(passwordEncoder.encode(createUserDTO.getPassword()))
                 .roles(roles)
