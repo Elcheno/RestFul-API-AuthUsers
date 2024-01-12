@@ -37,6 +37,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String password;
 
         try {
+            System.out.println("PRUEBA DE LECTURA DE JSON REQUEST: " + request.getInputStream().readAllBytes());
             userEntity = new ObjectMapper().readValue(request.getInputStream(), UserEntity.class);
             email = userEntity.getEmail();
             password = userEntity.getPassword();

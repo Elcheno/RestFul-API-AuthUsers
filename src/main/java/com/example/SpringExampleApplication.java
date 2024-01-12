@@ -34,6 +34,7 @@ public class SpringExampleApplication {
 					.email("admin@example.com")
 					.name("Admin")
 					.password(passwordEncoder.encode("admin"))
+					.uid("123456789")
 					.roles(Set.of(RoleEntity.builder()
 							.name(ERole.valueOf(ERole.ADMIN.name())).build()))
 					.build();
@@ -42,6 +43,7 @@ public class SpringExampleApplication {
 					.email("user@example.com")
 					.name("User")
 					.password(passwordEncoder.encode("user"))
+					.uid("987654321")
 					.roles(Set.of(RoleEntity.builder()
 							.name(ERole.valueOf(ERole.USER.name())).build()))
 					.build();
@@ -49,6 +51,7 @@ public class SpringExampleApplication {
 			UserEntity userEntity3 = UserEntity.builder()
 					.email("invited@example.com")
 					.name("Invited")
+					.uid("123459876")
 					.password(passwordEncoder.encode("invited"))
 					.roles(Set.of(RoleEntity.builder()
 							.name(ERole.valueOf(ERole.INVITED.name())).build()))

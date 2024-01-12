@@ -1,5 +1,6 @@
 package com.example.security;
 
+import com.example.security.filters.CustomFilter;
 import com.example.security.filters.JwtAuthenticationFilter;
 import com.example.security.filters.JwtAuthorizationFilter;
 import com.example.security.jwt.JwtUtils;
@@ -48,6 +49,7 @@ public class SecurityConfig {
                 })
                 .addFilter(jwtAuthenticationFilter)
                 .addFilterBefore(authorizationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new CustomFilter(), JwtAuthenticationFilter.class)
                 .build();
     }
 
